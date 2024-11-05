@@ -1,269 +1,72 @@
-
-## README.md 中文版
-
-
-# 项目名称
-
-### 项目概述
-
-本项目MEMO，是一个单词和句子学习应用，帮助用户通过艾宾浩斯记忆曲线提高记忆效果。应用支持多种排序方式、错误统计、复习提醒、和音频朗读功能，为用户提供便捷的学习体验。
-
-### 功能特性
-
--   **多种排序方式**：支持按错误次数、首字母、创建日期和随机排序，帮助用户更有效地查看单词列表。
--   **记忆曲线复习提醒**：根据艾宾浩斯记忆曲线提供复习计划，增强记忆。
--   **错误统计**：记录每个单词的错误次数，并支持按错误次数排序。
--   **音频朗读**：可选的句子和单词朗读功能。
--   **用户友好的界面**：提供易于操作的界面，并支持不同的排序和显示方式。
-
-### 技术栈
-
--   **语言**：Swift
--   **数据存储**：CoreData 或 UserDefaults
--   **音频播放**：AVFoundation
-
-----------
-
-## 项目结构
-
-|-- Models
-|   |-- Word.swift
-|   |-- Sentence.swift
-|-- ViewControllers
-|   |-- MainViewController.swift
-|   |-- WordListViewController.swift
-|   |-- PracticeViewController.swift
-|-- Managers
-|   |-- WordManager.swift
-|   |-- ForgettingCurveManager.swift
-|   |-- MistakeTracker.swift
-|-- Utils
-|   |-- Sorter.swift
-|   |-- AudioPlayer.swift
-|-- Tests
-|   |-- WordManagerTests.swift
-|   |-- ForgettingCurveManagerTests.swift
-|   |-- MistakeTrackerTests.swift
-|   |-- SorterTests.swift
-
-
-
-### 项目架构概览
-
-#### 架构层次
-
-1.  **界面层 (UI Layer)**:
-    -   包含所有用户界面元素和交互逻辑，包括主界面、设置界面、单词列表、练习页面等。
-    -   使用 `UIViewController` 和 `UITableView` 来展示列表和选项。
-2.  **逻辑层 (Logic Layer)**:
-    -   包含业务逻辑，比如生成带空格的句子、艾宾浩斯记忆曲线的逻辑、错误单词排序。
-    -   包括与模型交互、数据处理和算法的实现。
-3.  **数据层 (Data Layer)**:
-    -   负责存储和管理单词和句子数据，包括单词列表、用户添加的单词和错误统计等。
-    -   可以使用 `CoreData` 或 `UserDefaults` 来存储数据，具体取决于数据量和复杂性。
-
-#### 模块划分与设计模式
-
-1.  **单词和句子管理模块 (Word and Sentence Manager)**:
-    
-    -   **职责**: 负责管理用户添加的单词和句子，并生成带空格的句子。
-    -   **设计模式**: 使用 _工厂模式 (Factory Pattern)_ 来生成带空格的句子对象。
-2.  **记忆曲线模块 (Forgetting Curve)**:
-    
-    -   **职责**: 负责计算和提醒用户需要复习的单词。
-    -   **设计模式**: 使用 _单例模式 (Singleton Pattern)_，确保记忆曲线逻辑在整个应用中只有一个实例，并统一管理复习计划。
-3.  **错误统计模块 (Mistake Tracking)**:
-    
-    -   **职责**: 记录用户的错误统计信息，计算出错误次数最多的单词。
-    -   **设计模式**: 使用 _观察者模式 (Observer Pattern)_，当用户提交答案时自动更新错误统计信息。
-4.  **界面导航模块 (Navigation Manager)**:
-    
-    -   **职责**: 管理界面之间的跳转，例如从主界面到列表界面，从列表界面到练习界面等。
-    -   **设计模式**: 使用 _委托模式 (Delegate Pattern)_，在不同界面之间传递信息和触发界面更新。
-5.  **音频朗读模块 (Audio Playback)**:
-    
-    -   **职责**: 控制句子和单词的朗读功能。
-    -   **设计模式**: 使用 _策略模式 (Strategy Pattern)_，根据 `read aloud` 的设置决定是否播放音频。
-
-### 框架和流程
-
-#### 主流程
-
-1.  **启动应用**：用户打开应用进入主界面。
-2.  **选择功能**：
-    -   选择今日练习、最高错误、或特定单词列表。
-    -   点击添加单词或添加列表以更新内容。
-3.  **进入列表界面**：查看单词及句子，点击排序或进入练习。
-4.  **练习界面**：完成拖拽匹配，提交答案并查看结果。
-
-### 架构图和业务逻辑图
-
--   **架构图**：展示界面层、逻辑层、数据层之间的交互关系。
--   **业务逻辑图**：展示用户的主要操作流程，从主界面流向其他功能模块的交互。
-
-## 模块说明
-
-### 1. WordManager
-
-**职责**: 管理用户添加的单词和句子，包括生成带空格的句子。
-
-**主要功能**:
-
--   添加、删除和更新单词和句子。
--   支持多种排序方式：按错误次数、首字母、创建日期、随机排序。
--   每种排序方式包含“earliest first”和“latest first”两个选项，除随机外。
-
-**输入**:
-
--   用户的单词和句子信息（`Word` 和 `Sentence` 对象）。
--   排序方式（如 `errorCount`, `alphabet`, `creationDate`, `random`）。
-
-**输出**:
-
--   排序后的单词列表。
-
-**单元测试建议**:
-
--   测试添加和删除单词的功能。
--   测试不同排序方式的输出是否符合预期，包括错误次数、首字母、创建日期和随机排序。
-
-### 2. ForgettingCurveManager
-
-**职责**: 根据艾宾浩斯记忆曲线计算复习时间，提醒用户需要复习的单词。
-
-**主要功能**:
-
--   根据用户的记忆记录和错误统计，提供复习建议。
--   管理复习计划的定时提醒。
-
-**输入**:
-
--   单词的学习和复习时间。
--   错误统计数据。
-
-**输出**:
-
--   需要复习的单词列表。
-
-**单元测试建议**:
-
--   测试不同时间间隔下的复习时间计算逻辑。
--   测试提醒生成的准确性。
-
-### 3. MistakeTracker
-
-**职责**: 记录并管理用户的错误统计数据，帮助用户了解哪些单词最需要关注。
-
-**主要功能**:
-
--   每次用户回答错误时记录错误次数。
--   提供按错误次数排序的功能。
-
-**输入**:
-
--   用户的错误数据（单词的 ID 和错误次数）。
-
-**输出**:
-
--   按错误次数排序的单词列表。
-
-**单元测试建议**:
-
--   测试错误次数记录的准确性。
--   测试按错误次数排序的功能是否正确。
-
-### 4. Sorter
-
-**职责**: 提供单词列表的排序功能，包括错误次数、首字母、创建日期和随机排序。
-
-**主要功能**:
-
--   支持不同的排序方式。
--   按照“earliest first”和“latest first”进行升序或降序排列。
-
-**输入**:
-
--   单词列表。
--   排序方式和顺序。
-
-**输出**:
-
--   排序后的单词列表。
-
-**单元测试建议**:
-
--   测试每种排序方式的正确性。
--   测试 `random` 排序的随机性和按需触发的效果。
-
-### 5. AudioPlayer
-
-**职责**: 控制单词和句子的音频朗读功能。
-
-**主要功能**:
-
--   播放指定单词或句子的音频。
--   支持停止和暂停功能。
-
-**输入**:
-
--   单词或句子文本。
--   播放控制指令（播放、暂停、停止）。
-
-**输出**:
-
--   无（通过播放音频文件直接输出到用户设备）。
-
-**单元测试建议**:
-
--   测试播放功能是否正常。
--   测试暂停和停止功能的响应是否符合预期。
-
-----------
-
-## 界面说明
-
--   **MainViewController**：应用的主界面，提供访问单词列表、复习计划和设置的入口。
--   **WordListViewController**：展示单词列表的界面，支持不同的排序方式和刷新功能。
--   **PracticeViewController**：练习界面，用户可以复习单词并查看错误统计。
-
-## 练习页面的反馈机制
-
-在用户提交当前组的答案后，会有弹出框提示是否全部答对，并显示相应的操作选项：
-
--   **全部答对**：
-    
-    -   如果本组所有答案都正确，弹出框会显示 "全部答对" 的提示。
-    -   按钮选择：
-        -   **再试一次**：重新尝试当前组。
-        -   **下一组**：进入下一个单词组。
-        -   如果已经是最后一组，按钮将变为“再试一次”和“回到列表”，点击后返回到主页面。
--   **存在错误**：
-    
-    -   如果有错误答案，弹出框会显示 "n 个中错了 m 个"。
-    -   按钮选择：
-        -   **重做全部**：重新练习当前组的所有单词。
-        -   **重做错误部分**：仅重新练习当前组的错误单词。
-
-## 添加单词页面的输入检测
-
-在用户输入单词和句子后，点击 "Add" 按钮时，应用会检测输入内容的格式，并弹出提示框显示输入问题：
-
--   **格式错误**：
-    
-    -   若用户未使用分号 (;) 分隔单词和句子，如输入 "fat"，则弹出框提示：“格式错误，每行必须包含至少一个分号 (;)”。
--   **单词或句子为空**：
-    
-    -   若用户仅输入 "fat;" 或 ";I like apple"，则弹出框提示：“单词和句子不能为空”。
--   **句子不包含单词**：
-    
-    -   若用户输入 "fat;I like apple"，但句子中未包含单词 "fat"，则弹出框提示：“句子中必须包含单词”。
-
-### 代码规范
-
--   **命名规则**：使用驼峰命名法（例如 `addWord`、`sortList`）。
--   **注释风格**：每个函数前添加简要描述，并说明参数和返回值。
--   **代码格式**：遵循 Swift 社区的标准格式，保证代码整洁。
-
-### 其他
-
--   **技术栈**：使用 Swift 编写，SwiftUI 框架搭建界面。
+# MEMO - An iOS English Vocabulary Practice App
+
+MEMO is an iOS app designed to help users practice English vocabulary in a unique way. Instead of traditional flashcards, MEMO encourages users to provide vocabulary words within sentences and then turns those sentences into fill-in-the-blank exercises, where the user must drag and drop the correct word into the blank. The app is developed using Swift, with code written in Cursor and later transferred to Xcode for compilation. 
+
+- **Xcode Version**: 14
+
+## Table of Contents
+- [Features](#features)
+- [User Interface](#user-interface)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Feedback and Contributions](#feedback-and-contributions)
+
+## Features
+1. **Fill-in-the-Blank Practice**: 
+   - Users input vocabulary in the format of `word; sentence` (e.g., `meet;Nice to meet you`).
+   - MEMO automatically converts sentences to contain a blank (e.g., `Nice to ______ you`), creating a matching exercise where users drag the missing word into the blank.
+
+2. **Customizable Lists**:
+   - Users can create and organize words into lists for specific study sets.
+   - A default list is provided, and users can add or delete custom lists as needed.
+
+3. **Configurable Settings**:
+   - Users can set the number of sentences per practice group (3, 6, or 9).
+   - An optional "Read Aloud" feature reads sentences and words aloud during practice for enhanced learning.
+
+4. **Sorting Options**:
+   - Sort words within lists by error count, alphabetical order, creation date, or randomized order.
+   - Sorting preferences include earliest to latest and latest to earliest, depending on the selected criterion.
+
+5. **Error Feedback and Re-attempts**:
+   - After each practice session, the app provides feedback on the number of correct and incorrect answers.
+   - Users can choose to redo the entire exercise, focus only on incorrect answers, or move to the next group if all answers are correct.
+
+## User Interface
+
+### Main Screen
+- **List Buttons**: Displays existing lists, including a default list. Users can click a list button to open it.
+- **Add Word Button**: Opens a dialog for users to add a new word and sentence. The word must be assigned to a specific list.
+- **Add List Button**: Opens a small dialog to create a new list with a custom name.
+- **Settings Button**: Opens a settings menu where users can:
+  - Set the number of sentences per practice group.
+  - Toggle the "Read Aloud" feature.
+
+### List View
+- Displays all sentences in the selected list, with options to:
+  - **Practice**: Start a practice session.
+  - **Sort By**: Sort list contents by error count, alphabetical order, creation date, or random order.
+
+### Practice Screen
+- Users drag the missing word to fill in the blanks in sentences.
+- **Submit Button**: After completing a group, users can submit answers. If incorrect answers are detected, the app displays a dialog showing the number of errors and offers:
+  - **Retry All**: Redo the entire group.
+  - **Retry Incorrect Only**: Retry only the incorrect answers.
+- If all answers are correct, options are:
+  - **Retry**: Restart the current group.
+  - **Next Group**: Move to the next group (if not the last).
+  - **Return to Lists**: Go back to the main screen after finishing the last group.
+
+### Add Word Screen
+- When adding a word, users must follow the `word; sentence` format:
+  - If incorrect format, a dialog will display the appropriate error message, such as:
+    - "Format error, each entry must include a `;`."
+    - "Both word and sentence cannot be empty."
+    - "The sentence must include the word."
+
+## Usage
+1. Launch the app and create a new list or select the default list.
+2. Add vocabulary words in the format `word; sentence`.
+3. Begin practicing by selecting a list and choosing "Practice."
+4. Drag the correct word into each blank, then click "Submit" to check your answers.
+5. Use the feedback to retry incorrect answers or advance to the next group.
