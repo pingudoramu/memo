@@ -7,13 +7,36 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		041B11782CE33B550016C982 /* WordEntryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041B11772CE33B550016C982 /* WordEntryTests.swift */; };
+		041B117A2CE33C110016C982 /* WordListViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041B11792CE33C110016C982 /* WordListViewModelTests.swift */; };
+		041B117C2CE33C640016C982 /* ListViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041B117B2CE33C640016C982 /* ListViewModelTests.swift */; };
+		041B117E2CE33C880016C982 /* WordEntryTimeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041B117D2CE33C880016C982 /* WordEntryTimeTests.swift */; };
+		041B11802CE33CBD0016C982 /* ImportExportTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041B117F2CE33CBD0016C982 /* ImportExportTests.swift */; };
+		041B11832CE33CE30016C982 /* VocabularyListSortTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041B11822CE33CE30016C982 /* VocabularyListSortTests.swift */; };
 		045CD2602CD9F203003A9F37 /* memoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045CD25F2CD9F203003A9F37 /* memoApp.swift */; };
 		045CD2622CD9F203003A9F37 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045CD2612CD9F203003A9F37 /* ContentView.swift */; };
 		045CD2642CD9F205003A9F37 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 045CD2632CD9F205003A9F37 /* Assets.xcassets */; };
 		045CD2672CD9F205003A9F37 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 045CD2662CD9F205003A9F37 /* Preview Assets.xcassets */; };
-		045CD2712CD9F205003A9F37 /* memoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045CD2702CD9F205003A9F37 /* memoTests.swift */; };
+		045CD2712CD9F205003A9F37 /* PracticeSessionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045CD2702CD9F205003A9F37 /* PracticeSessionTests.swift */; };
 		045CD27B2CD9F205003A9F37 /* memoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045CD27A2CD9F205003A9F37 /* memoUITests.swift */; };
 		045CD27D2CD9F205003A9F37 /* memoUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045CD27C2CD9F205003A9F37 /* memoUITestsLaunchTests.swift */; };
+		045CD2A72CDA35DC003A9F37 /* WordEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045CD2A62CDA35DC003A9F37 /* WordEntry.swift */; };
+		045CD2A92CDA35EA003A9F37 /* VocabularyList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045CD2A82CDA35EA003A9F37 /* VocabularyList.swift */; };
+		045CD2AB2CDA35F8003A9F37 /* PracticeSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045CD2AA2CDA35F8003A9F37 /* PracticeSession.swift */; };
+		045CD2AD2CDA3608003A9F37 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045CD2AC2CDA3608003A9F37 /* MainView.swift */; };
+		045CD2AF2CDA360E003A9F37 /* ListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045CD2AE2CDA360E003A9F37 /* ListView.swift */; };
+		045CD2B12CDA3616003A9F37 /* PracticeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045CD2B02CDA3616003A9F37 /* PracticeView.swift */; };
+		045CD2B32CDA361E003A9F37 /* AddWordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045CD2B22CDA361E003A9F37 /* AddWordView.swift */; };
+		045CD2B52CDA3625003A9F37 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045CD2B42CDA3625003A9F37 /* SettingsView.swift */; };
+		045CD2B72CDA362B003A9F37 /* ListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045CD2B62CDA362B003A9F37 /* ListViewModel.swift */; };
+		045CD2B92CDA3635003A9F37 /* PracticeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045CD2B82CDA3635003A9F37 /* PracticeViewModel.swift */; };
+		045CD2BD2CDA41DB003A9F37 /* AddListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045CD2BC2CDA41DB003A9F37 /* AddListView.swift */; };
+		045CD2C12CDA5FB9003A9F37 /* WordListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045CD2C02CDA5FB9003A9F37 /* WordListViewModel.swift */; };
+		045CD2C32CDA74A0003A9F37 /* SpeechService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045CD2C22CDA74A0003A9F37 /* SpeechService.swift */; };
+		045EC8542CE0DF9000C25A29 /* ForgettingCurveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045EC8532CE0DF8F00C25A29 /* ForgettingCurveView.swift */; };
+		04ADF5B02CE8D9F90025D53A /* SelectableText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04ADF5AF2CE8D9F90025D53A /* SelectableText.swift */; };
+		04ADF5B22CE9917E0025D53A /* SelectableTextTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04ADF5B12CE9917E0025D53A /* SelectableTextTests.swift */; };
+		04ADF5B42CE992AA0025D53A /* CustomTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04ADF5B32CE992AA0025D53A /* CustomTextView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,16 +57,39 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		041B11772CE33B550016C982 /* WordEntryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordEntryTests.swift; sourceTree = "<group>"; };
+		041B11792CE33C110016C982 /* WordListViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordListViewModelTests.swift; sourceTree = "<group>"; };
+		041B117B2CE33C640016C982 /* ListViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewModelTests.swift; sourceTree = "<group>"; };
+		041B117D2CE33C880016C982 /* WordEntryTimeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordEntryTimeTests.swift; sourceTree = "<group>"; };
+		041B117F2CE33CBD0016C982 /* ImportExportTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImportExportTests.swift; sourceTree = "<group>"; };
+		041B11822CE33CE30016C982 /* VocabularyListSortTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VocabularyListSortTests.swift; sourceTree = "<group>"; };
 		045CD25C2CD9F203003A9F37 /* memo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = memo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		045CD25F2CD9F203003A9F37 /* memoApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = memoApp.swift; sourceTree = "<group>"; };
 		045CD2612CD9F203003A9F37 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		045CD2632CD9F205003A9F37 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		045CD2662CD9F205003A9F37 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		045CD26C2CD9F205003A9F37 /* memoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = memoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		045CD2702CD9F205003A9F37 /* memoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = memoTests.swift; sourceTree = "<group>"; };
+		045CD2702CD9F205003A9F37 /* PracticeSessionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PracticeSessionTests.swift; sourceTree = "<group>"; };
 		045CD2762CD9F205003A9F37 /* memoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = memoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		045CD27A2CD9F205003A9F37 /* memoUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = memoUITests.swift; sourceTree = "<group>"; };
 		045CD27C2CD9F205003A9F37 /* memoUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = memoUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		045CD2A62CDA35DC003A9F37 /* WordEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordEntry.swift; sourceTree = "<group>"; };
+		045CD2A82CDA35EA003A9F37 /* VocabularyList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VocabularyList.swift; sourceTree = "<group>"; };
+		045CD2AA2CDA35F8003A9F37 /* PracticeSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PracticeSession.swift; sourceTree = "<group>"; };
+		045CD2AC2CDA3608003A9F37 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
+		045CD2AE2CDA360E003A9F37 /* ListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListView.swift; sourceTree = "<group>"; };
+		045CD2B02CDA3616003A9F37 /* PracticeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PracticeView.swift; sourceTree = "<group>"; };
+		045CD2B22CDA361E003A9F37 /* AddWordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddWordView.swift; sourceTree = "<group>"; };
+		045CD2B42CDA3625003A9F37 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		045CD2B62CDA362B003A9F37 /* ListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewModel.swift; sourceTree = "<group>"; };
+		045CD2B82CDA3635003A9F37 /* PracticeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PracticeViewModel.swift; sourceTree = "<group>"; };
+		045CD2BC2CDA41DB003A9F37 /* AddListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddListView.swift; sourceTree = "<group>"; };
+		045CD2C02CDA5FB9003A9F37 /* WordListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordListViewModel.swift; sourceTree = "<group>"; };
+		045CD2C22CDA74A0003A9F37 /* SpeechService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeechService.swift; sourceTree = "<group>"; };
+		045EC8532CE0DF8F00C25A29 /* ForgettingCurveView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForgettingCurveView.swift; sourceTree = "<group>"; };
+		04ADF5AF2CE8D9F90025D53A /* SelectableText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectableText.swift; sourceTree = "<group>"; };
+		04ADF5B12CE9917E0025D53A /* SelectableTextTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectableTextTests.swift; sourceTree = "<group>"; };
+		04ADF5B32CE992AA0025D53A /* CustomTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,6 +140,10 @@
 		045CD25E2CD9F203003A9F37 /* memo */ = {
 			isa = PBXGroup;
 			children = (
+				045CD2C42CDA74B3003A9F37 /* Utils */,
+				045CD2A52CDA35B2003A9F37 /* ViewModels */,
+				045CD2A42CDA35AE003A9F37 /* Views */,
+				045CD2A32CDA35A7003A9F37 /* Models */,
 				045CD25F2CD9F203003A9F37 /* memoApp.swift */,
 				045CD2612CD9F203003A9F37 /* ContentView.swift */,
 				045CD2632CD9F205003A9F37 /* Assets.xcassets */,
@@ -113,7 +163,14 @@
 		045CD26F2CD9F205003A9F37 /* memoTests */ = {
 			isa = PBXGroup;
 			children = (
-				045CD2702CD9F205003A9F37 /* memoTests.swift */,
+				045CD2702CD9F205003A9F37 /* PracticeSessionTests.swift */,
+				041B11772CE33B550016C982 /* WordEntryTests.swift */,
+				041B11792CE33C110016C982 /* WordListViewModelTests.swift */,
+				041B117B2CE33C640016C982 /* ListViewModelTests.swift */,
+				041B117D2CE33C880016C982 /* WordEntryTimeTests.swift */,
+				041B117F2CE33CBD0016C982 /* ImportExportTests.swift */,
+				041B11822CE33CE30016C982 /* VocabularyListSortTests.swift */,
+				04ADF5B12CE9917E0025D53A /* SelectableTextTests.swift */,
 			);
 			path = memoTests;
 			sourceTree = "<group>";
@@ -125,6 +182,50 @@
 				045CD27C2CD9F205003A9F37 /* memoUITestsLaunchTests.swift */,
 			);
 			path = memoUITests;
+			sourceTree = "<group>";
+		};
+		045CD2A32CDA35A7003A9F37 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				045CD2A62CDA35DC003A9F37 /* WordEntry.swift */,
+				045CD2A82CDA35EA003A9F37 /* VocabularyList.swift */,
+				045CD2AA2CDA35F8003A9F37 /* PracticeSession.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		045CD2A42CDA35AE003A9F37 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				045CD2AC2CDA3608003A9F37 /* MainView.swift */,
+				045CD2AE2CDA360E003A9F37 /* ListView.swift */,
+				045EC8532CE0DF8F00C25A29 /* ForgettingCurveView.swift */,
+				045CD2B02CDA3616003A9F37 /* PracticeView.swift */,
+				045CD2B22CDA361E003A9F37 /* AddWordView.swift */,
+				045CD2B42CDA3625003A9F37 /* SettingsView.swift */,
+				045CD2BC2CDA41DB003A9F37 /* AddListView.swift */,
+				04ADF5AF2CE8D9F90025D53A /* SelectableText.swift */,
+				04ADF5B32CE992AA0025D53A /* CustomTextView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		045CD2A52CDA35B2003A9F37 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				045CD2B62CDA362B003A9F37 /* ListViewModel.swift */,
+				045CD2B82CDA3635003A9F37 /* PracticeViewModel.swift */,
+				045CD2C02CDA5FB9003A9F37 /* WordListViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		045CD2C42CDA74B3003A9F37 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				045CD2C22CDA74A0003A9F37 /* SpeechService.swift */,
+			);
+			path = Utils;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -258,7 +359,23 @@
 			buildActionMask = 2147483647;
 			files = (
 				045CD2622CD9F203003A9F37 /* ContentView.swift in Sources */,
+				045CD2B92CDA3635003A9F37 /* PracticeViewModel.swift in Sources */,
+				04ADF5B42CE992AA0025D53A /* CustomTextView.swift in Sources */,
+				045CD2C32CDA74A0003A9F37 /* SpeechService.swift in Sources */,
+				045CD2AD2CDA3608003A9F37 /* MainView.swift in Sources */,
 				045CD2602CD9F203003A9F37 /* memoApp.swift in Sources */,
+				045CD2B32CDA361E003A9F37 /* AddWordView.swift in Sources */,
+				045CD2B12CDA3616003A9F37 /* PracticeView.swift in Sources */,
+				045CD2C12CDA5FB9003A9F37 /* WordListViewModel.swift in Sources */,
+				045CD2BD2CDA41DB003A9F37 /* AddListView.swift in Sources */,
+				045CD2B52CDA3625003A9F37 /* SettingsView.swift in Sources */,
+				045CD2AF2CDA360E003A9F37 /* ListView.swift in Sources */,
+				045CD2A72CDA35DC003A9F37 /* WordEntry.swift in Sources */,
+				04ADF5B02CE8D9F90025D53A /* SelectableText.swift in Sources */,
+				045CD2AB2CDA35F8003A9F37 /* PracticeSession.swift in Sources */,
+				045EC8542CE0DF9000C25A29 /* ForgettingCurveView.swift in Sources */,
+				045CD2A92CDA35EA003A9F37 /* VocabularyList.swift in Sources */,
+				045CD2B72CDA362B003A9F37 /* ListViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -266,7 +383,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				045CD2712CD9F205003A9F37 /* memoTests.swift in Sources */,
+				04ADF5B22CE9917E0025D53A /* SelectableTextTests.swift in Sources */,
+				041B11782CE33B550016C982 /* WordEntryTests.swift in Sources */,
+				041B11832CE33CE30016C982 /* VocabularyListSortTests.swift in Sources */,
+				041B117E2CE33C880016C982 /* WordEntryTimeTests.swift in Sources */,
+				045CD2712CD9F205003A9F37 /* PracticeSessionTests.swift in Sources */,
+				041B117C2CE33C640016C982 /* ListViewModelTests.swift in Sources */,
+				041B11802CE33CBD0016C982 /* ImportExportTests.swift in Sources */,
+				041B117A2CE33C110016C982 /* WordListViewModelTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -417,8 +541,11 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"memo/Preview Content\"";
+				DEVELOPMENT_TEAM = DZPXL7QM98;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = NSMicrophoneUsageDescription;
+				INFOPLIST_KEY_NSSpeechRecognitionUsageDescription = NSSpeechRecognitionUsageDescription;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -445,8 +572,11 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"memo/Preview Content\"";
+				DEVELOPMENT_TEAM = DZPXL7QM98;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = NSMicrophoneUsageDescription;
+				INFOPLIST_KEY_NSSpeechRecognitionUsageDescription = NSSpeechRecognitionUsageDescription;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -472,6 +602,7 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = DZPXL7QM98;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
 				MARKETING_VERSION = 1.0;
@@ -491,6 +622,7 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = DZPXL7QM98;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
 				MARKETING_VERSION = 1.0;
@@ -509,6 +641,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = DZPXL7QM98;
 				GENERATE_INFOPLIST_FILE = YES;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = pingudoramu.memoUITests;
@@ -526,6 +659,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = DZPXL7QM98;
 				GENERATE_INFOPLIST_FILE = YES;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = pingudoramu.memoUITests;
