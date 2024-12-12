@@ -21,7 +21,7 @@ struct WordEntry: Identifiable, Codable {
     var isFirstPractice: Bool
     private var practiceHistory: [Bool] = []
     private let maxHistoryLength = 5
-
+    private var actualWordForm: String?
     
     init(word: String, sentence: String) {
         self.id = UUID()
@@ -40,6 +40,12 @@ struct WordEntry: Identifiable, Codable {
         self.nextReviewDate = tomorrow
         
         self.isFirstPractice = true
+        
+        // 在初始化时就找到并保存实际的单词形式
+        let matches = findCompleteWordMatches(word, in: sentence)
+        if let firstMatch = matches.first {
+            self.actualWordForm = String(sentence[firstMatch])
+        }
     }
     
     // For practice view - shows blank
@@ -52,6 +58,10 @@ struct WordEntry: Identifiable, Codable {
             result.replaceSubrange(range, with: "______")
         }
         return result
+    }
+    
+    var wordToFill: String {
+        return actualWordForm ?? word
     }
     
     var blankSentence: String {
@@ -372,5 +382,5 @@ struct WordEntry: Identifiable, Codable {
     }
           }
 enum CodingKeys: String, CodingKey {
-    case id, word, sentence, errorCount, createdAt, level, lastReviewDate, nextReviewDate, isFirstPractice, practiceHistory
+    case id, word, sentence, errorCount, createdAt, level, lastReviewDate, nextReviewDate, isFirstPractice, practiceHistory, actualWordForm
 }

@@ -1,5 +1,11 @@
 import SwiftUI
 
+extension Array {
+    subscript(safe index: Int) -> Element? {
+        return indices.contains(index) ? self[index] : nil
+    }
+}
+
 struct PracticeView: View {
     @ObservedObject var viewModel: WordListViewModel
     @Environment(\.dismiss) private var dismiss
@@ -78,7 +84,7 @@ struct PracticeView: View {
         
         for (index, entry) in currentEntries.enumerated() {
             if let droppedWord = droppedWords[index] {
-                let isCorrect = droppedWord == entry.word
+                let isCorrect = droppedWord == entry.wordToFill
                 if !isCorrect {
                     incorrectIndices.insert(index)
                 }
@@ -233,8 +239,14 @@ struct PracticeView: View {
                                     }
                                 }
                                 .dropDestination(for: String.self) { items, _ in
-                                    guard let word = items.first else { return false }
-                                    droppedWords[index] = word
+                                    guard let droppedWord = items.first else { return false }
+                                    // 找到对应的 entry
+                                    if let entry = currentEntries[safe: index] {
+                                        // 如果拖入的是原形，存储对应的变化形式
+                                        if droppedWord == entry.word {
+                                            droppedWords[index] = entry.wordToFill
+                                        }
+                                    }
                                     return true
                                 }
                             
@@ -381,4 +393,5 @@ struct PracticeView: View {
         
         return currentConsecutiveCorrects
     }
+
 }
