@@ -181,37 +181,33 @@ class WordListViewModel: ObservableObject {
             }.count
         }
     }
-    
-    
-//    // 获取所有需要复习的单词
-//    func getReviewEntries() -> [WordEntry] {
-//        let now = Date()
-//        return wordLists.flatMap { list in
-//            list.entries.filter { entry in
-//                entry.nextReviewDate <= now
-//            }
-//        }
-//    }
+ 
     
     // 获取所有需要复习的单词
     func getReviewEntries() -> [WordEntry] {
         let now = Date()
         let calendar = Calendar.current
         let startOfToday = calendar.startOfDay(for: now)
-        let endOfToday = calendar.date(bySettingHour: 23, minute: 59, second: 59, of: startOfToday)!
         
-        return wordLists.flatMap { list in
+        print("Today's start: \(startOfToday)")
+        
+        let entries = wordLists.flatMap { list in
             list.entries.filter { entry in
-                // 首次练习的单词
-                entry.isFirstPractice ||
-                // 今天应该复习的单词（nextReviewDate 正好是今天）
-                calendar.isDate(entry.nextReviewDate, inSameDayAs: startOfToday) ||
-                // 过期未复习的单词（nextReviewDate 在今天之前）
-                entry.nextReviewDate < startOfToday
+                let entryDate = calendar.startOfDay(for: entry.nextReviewDate)
+                print("Word: \(entry.word), Next Review: \(entryDate), isFirstPractice: \(entry.isFirstPractice)")
+                
+                // 修改这里的逻辑：只有当 nextReviewDate 等于或早于今天时才返回 true
+                let shouldReview = entry.isFirstPractice ||
+                    calendar.compare(entryDate, to: startOfToday, toGranularity: .day) != .orderedDescending
+                
+                return shouldReview
             }
         }
+        
+        print("Total entries to review: \(entries.count)")
+        return entries
     }
-  
+    
     
     func updateReviewDate(for entryId: UUID, in listId: UUID) {
         if let listIndex = wordLists.firstIndex(where: { $0.id == listId }),
@@ -267,17 +263,15 @@ class WordListViewModel: ObservableObject {
             let fileName = "\(safeFileName).csv"
             
             // CSV 表头
-            var csvContent = "Word;Sentence;Level;Created Date;Last Review Date;Next Review Date\n"
+            var csvContent = "Word;Sentence;Level;Created Date;Next Review Date\n"
             
             // 添加每个单词的数据
             for entry in list.entries {
                 let createdDate = dateFormatter.string(from: entry.createdAt)
-                let lastReviewDate = dateFormatter.string(from: entry.lastReviewDate)
                 let nextReviewDate = dateFormatter.string(from: entry.nextReviewDate)
                 
-                // 处理句子中的引号和分号
                 let escapedSentence = "\"\(entry.sentence.replacingOccurrences(of: "\"", with: "\"\""))\""
-                let line = "\(entry.word);\(escapedSentence);\(entry.level);\(createdDate);\(lastReviewDate);\(nextReviewDate)\n"
+                let line = "\(entry.word);\(escapedSentence);\(entry.level);\(createdDate);\(nextReviewDate)\n"
                 csvContent.append(line)
             }
             

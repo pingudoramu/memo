@@ -196,32 +196,31 @@ struct DocumentPicker: UIViewControllerRepresentable {
             var entries: [WordEntry] = []
             let dateFormatter = DateFormatter()
             dateFormatter.dateFormat = "yyyy/MM/dd"
+            let calendar = Calendar.current
             
-            for (lineIndex, line) in lines.dropFirst().enumerated() {
+            for line in lines.dropFirst() {
                 var fields: [String] = []
                 var currentField = ""
                 var insideQuotes = false
-                       
-                       for char in line {
-                           switch char {
-                           case "\"":
-                               insideQuotes.toggle()
-                           case ";":
-                               if !insideQuotes {
-                                   fields.append(currentField)
-                                   currentField = ""
-                               } else {
-                                   currentField.append(char)
-                               }
-                           default:
-                               currentField.append(char)
-                           }
-                       }
+                
+                for char in line {
+                    switch char {
+                    case "\"":
+                        insideQuotes.toggle()
+                    case ";":
+                        if !insideQuotes {
+                            fields.append(currentField)
+                            currentField = ""
+                        } else {
+                            currentField.append(char)
+                        }
+                    default:
+                        currentField.append(char)
+                    }
+                }
                 fields.append(currentField)
                 
-                guard fields.count >= 2 else {
-                    continue
-                }
+                guard fields.count >= 5 else { continue }
                 
                 let word = fields[0].trimmingCharacters(in: .whitespaces)
                 var sentence = fields[1].trimmingCharacters(in: .whitespaces)
@@ -235,12 +234,25 @@ struct DocumentPicker: UIViewControllerRepresentable {
                     continue
                 }
                 
-                let entry = WordEntry(word: word, sentence: sentence)
+                let level = Int(fields[2]) ?? 1
+                let createdDate = dateFormatter.date(from: fields[3]) ?? Date()
+                let nextReviewDate = dateFormatter.date(from: fields[4]).map { date in
+                    calendar.startOfDay(for: date)
+                } ?? calendar.startOfDay(for: Date())
+                
+                let entry = WordEntry(
+                    importing: word,
+                    sentence: sentence,
+                    level: level,
+                    createdAt: createdDate,
+                    nextReviewDate: nextReviewDate
+                )
+                
                 entries.append(entry)
             }
-                   
-                   return entries.isEmpty ? nil : entries
-               }
+            
+            return entries.isEmpty ? nil : entries
+        }
            }
        }
 

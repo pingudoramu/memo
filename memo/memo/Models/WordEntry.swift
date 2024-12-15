@@ -16,12 +16,29 @@ struct WordEntry: Identifiable, Codable {
     var errorCount: Int
     var createdAt: Date
     var level: Int
-    var lastReviewDate: Date
     var nextReviewDate: Date
     var isFirstPractice: Bool
     private var practiceHistory: [Bool] = []
     private let maxHistoryLength = 5
     private var actualWordForm: String?
+    
+    // 用于导入时使用
+    init(importing word: String, sentence: String, level: Int, createdAt: Date, nextReviewDate: Date) {
+        self.id = UUID()
+        self.word = word.trimmingCharacters(in: .whitespaces)
+        self.sentence = sentence.trimmingCharacters(in: .whitespaces)
+        self.errorCount = 0
+        self.createdAt = createdAt
+        self.level = level
+        self.nextReviewDate = nextReviewDate
+        self.isFirstPractice = false  // 导入的单词不是首次练习
+        
+        let matches = findCompleteWordMatches(word, in: sentence)
+        if let firstMatch = matches.first {
+            self.actualWordForm = String(sentence[firstMatch])
+        }
+    }
+    
     
     init(word: String, sentence: String) {
         self.id = UUID()
@@ -32,7 +49,6 @@ struct WordEntry: Identifiable, Codable {
         self.errorCount = 0
         self.createdAt = Date()
         self.level = 1
-        self.lastReviewDate = Date()
         
         // 新单词从第二天开始复习
         let calendar = Calendar.current
@@ -255,24 +271,23 @@ struct WordEntry: Identifiable, Codable {
      
      // 计算下次复习时间的方法 - 使用艾宾浩斯遗忘曲线的时间间隔
      
-         mutating func updateNextReviewDate() {
-             let calendar = Calendar.current
-             let daysToAdd: Int
+    mutating func updateNextReviewDate() {
+        let calendar = Calendar.current
+        let daysToAdd: Int
 
-            switch level {
-            case 1: daysToAdd = 1    // 第一天后复习
-             case 2: daysToAdd = 3    // 3天后复习
-             case 3: daysToAdd = 7    // 1周后复习
-             case 4: daysToAdd = 14   // 2周后复习
-             case 5: daysToAdd = 30   // 1个月后复习
-             case 6: daysToAdd = 60   // 2个月后复习
-             default: daysToAdd = 1
-            }
-
-                  lastReviewDate = Date()
-                      let futureDate = calendar.date(byAdding: .day, value: daysToAdd, to: Date())!
-                         nextReviewDate = calendar.startOfDay(for: futureDate)
-              }
+        switch level {
+        case 1: daysToAdd = 1
+        case 2: daysToAdd = 3
+        case 3: daysToAdd = 7
+        case 4: daysToAdd = 14
+        case 5: daysToAdd = 30
+        case 6: daysToAdd = 60
+        default: daysToAdd = 1
+        }
+        
+        let futureDate = calendar.date(byAdding: .day, value: daysToAdd, to: Date())!
+        nextReviewDate = calendar.startOfDay(for: futureDate)
+    }
 
               
               // 新增：检查是否需要复习

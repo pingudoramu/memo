@@ -65,7 +65,6 @@ public struct ForgettingCurveView: View {
                     let practiceEntries = entries.map { (entry: WordEntry) -> WordEntry in  // 添加明确的类型
                         var copy = entry
                         copy.id = entry.id
-                        copy.lastReviewDate = entry.lastReviewDate
                         copy.nextReviewDate = entry.nextReviewDate
                         copy.level = entry.level
                         copy.errorCount = entry.errorCount
