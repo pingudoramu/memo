@@ -84,6 +84,7 @@ struct PracticeView: View {
         
         for (index, entry) in currentEntries.enumerated() {
             if let droppedWord = droppedWords[index] {
+                // 使用 wordToFill 来检查答案是否正确
                 let isCorrect = droppedWord == entry.wordToFill
                 if !isCorrect {
                     incorrectIndices.insert(index)
@@ -124,8 +125,8 @@ struct PracticeView: View {
         shuffledWords = Array(allPracticeEntries.dropFirst(startIndex).prefix(wordsPerGroup))
             .map { $0.word }
             .shuffled()
-        
     }
+    
     
     private func retryIncorrectOnly() {
         let correctAnswers = droppedWords.filter { !incorrectIndices.contains($0.key) }
@@ -239,12 +240,14 @@ struct PracticeView: View {
                                     }
                                 }
                                 .dropDestination(for: String.self) { items, _ in
-                                    guard let droppedWord = items.first else { return false }
-                                    // 找到对应的 entry
+                                    guard let word = items.first else { return false }
+                                    // 先存储用户拖入的原始单词
                                     if let entry = currentEntries[safe: index] {
-                                        // 如果拖入的是原形，存储对应的变化形式
-                                        if droppedWord == entry.word {
+                                        // 只有当拖入的是正确的单词时，才使用 wordToFill
+                                        if word.lowercased() == entry.word.lowercased() {
                                             droppedWords[index] = entry.wordToFill
+                                        } else {
+                                            droppedWords[index] = word  // 否则保持原样
                                         }
                                     }
                                     return true
@@ -277,7 +280,17 @@ struct PracticeView: View {
                                 RoundedRectangle(cornerRadius: 8)
                                     .stroke(Color.themeColor)
                             )
-                            .opacity(droppedWords.values.contains(word) ? 0.5 : 1) 
+                            .opacity(droppedWords.values.contains { droppedWord in
+                                // 检查是否有任何 entry 使用了这个单词
+                                currentEntries.contains { entry in
+                                    if entry.word.lowercased() == word.lowercased() {
+                                        // 如果是原形匹配，检查是否被使用
+                                        return droppedWords.values.contains(word) ||
+                                               droppedWords.values.contains(entry.wordToFill)
+                                    }
+                                    return false
+                                }
+                            } ? 0.5 : 1)
                             .draggable(word)
                             .onTapGesture {
                                 if readAloudEnabled {
